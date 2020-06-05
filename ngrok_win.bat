@@ -1,2 +1,2 @@
-cd configfiles
-ngrok.exe tcp -config=ngrok.yml 5432
+@echo off
+cmd /k "venv\Scripts\activate & cd configfiles & python ngrok.py"

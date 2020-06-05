@@ -1,2 +1,4 @@
+#!/usr/bin/env bash
+source ./venv/bin/activate
 cd configfiles
-ngrok tcp -config=ngrok.yml 5432
+python ngrok.py
