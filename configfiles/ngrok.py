@@ -1,7 +1,7 @@
 import requests
 from log import set_log_settings
 from pyngrok import ngrok
-from settings import UPDATE_URL, NGROK_TOKEN
+from settings import UPDATE_URL, NGROK_TOKEN, NGROK_DOWN
 
 set_log_settings()
 ngrok.set_auth_token(NGROK_TOKEN)
@@ -17,5 +17,5 @@ try:
     r = requests.post(UPDATE_URL, data=post_data)
     ngrok_process.proc.wait()
 except KeyboardInterrupt:
-    print("~~~Shutting down server~~~")
+    print(NGROK_DOWN)
     ngrok.kill()
