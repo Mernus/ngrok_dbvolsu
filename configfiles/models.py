@@ -7,15 +7,6 @@ import settings
 from pyngrok import ngrok, conf
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-import signal
-
-
-def signal_handler():
-    print("Keybord")
-
-
-signal.signal(signal.SIGTERM, signal_handler)
-
 
 class NgrokServer:
     __working = False
