@@ -41,8 +41,8 @@ class NgrokServer:
 
         requests.post(settings.API_URL + settings.UPDATE_URL, data=post_data, verify=False)
 
-        ngrok_process = ngrok.get_ngrok_process()
-        ngrok_process.proc.wait()
+        ngrok_process = ngrok.get_ngrok_process().proc
+        ngrok_process.wait()
 
     def kill(self):
         if not self.__working:

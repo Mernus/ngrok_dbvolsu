@@ -5,7 +5,9 @@ LOG_LEVEL = logging.DEBUG
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 # Params for api
-API_URL = "https://dbvolsu.herokuapp.com/api/"
+# SERVER_HOST = "https://dbvolsu.herokuapp.com/"
+SERVER_HOST = "http://127.0.0.1:8000/"
+API_URL = SERVER_HOST + "api/"
 UPDATE_URL = "def_update/"
 CLEAR_REDIS_URL = "redis_clear/"
 
