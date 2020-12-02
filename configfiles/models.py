@@ -33,16 +33,14 @@ class NgrokServer:
         return super(NgrokServer, cls).__new__(cls)
 
     def __init__(self):
-        if not self.__working:
-            return None
+        if self.__working:
+            ngrok_host, ngrok_port = self.__active_tunnel.public_url[6:].split(':')
+            post_data = {'host': ngrok_host, 'port': ngrok_port}
 
-        ngrok_host, ngrok_port = self.__active_tunnel.public_url[6:].split(':')
-        post_data = {'host': ngrok_host, 'port': ngrok_port}
+            requests.post(settings.API_URL + settings.UPDATE_URL, data=post_data, verify=False)
 
-        requests.post(settings.API_URL + settings.UPDATE_URL, data=post_data, verify=False)
-
-        ngrok_process = ngrok.get_ngrok_process().proc
-        ngrok_process.wait()
+            ngrok_process = ngrok.get_ngrok_process().proc
+            ngrok_process.wait()
 
     def kill(self):
         if not self.__working:
